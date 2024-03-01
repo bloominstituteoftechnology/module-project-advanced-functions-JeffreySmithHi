@@ -49,10 +49,10 @@
     // 🧠 Solve this challenge using a for/in loop or a for loop.
     const processLearnersLoop = (learner) => {
         for(let i = 0; i < learner.length; i++){
-          if(learner[i] === 0){
-            learner = false
-          } if(learner[i] === 1){
-            learner = true
+          if(learner[i].lovesJS === 0){
+            learner[i].lovesJS = false
+          } else {
+           learner[i].lovesJS = true
           }
         }
         return learner
@@ -64,12 +64,15 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 Use arrow functions whenever possible.
-    const processLearnerForEach = (learner, lovesJS) => {
-        learner.forEach(function(learner){
-          if(lovesJS === 0){
-            learner.lovesJS = false
+    const processLearnerForEach = (learner) => {
+        learner.forEach(learners => {
+          if(learners.lovesJS === 0){
+            learners.lovesJS = false
+          } else {
+            learners.lovesJS = true
           }
         })
+        return learner
       }
     
 
@@ -79,8 +82,15 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
-
+    const processLearnerMap = (learner) => {
+      learner.map(learners => {
+        if(learners.lovesJS === 0){
+            learners.lovesJS = false
+          } else {
+            learners.lovesJS = true
+          }
+      })
+      return learner
     }
 
     // 👉 CHALLENGE 5
@@ -91,7 +101,17 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 You will need to declare a result array into which you push learners from inside your forEach loop.
-    const getJavaScriptLoversForEach = () => {
+    const getJavaScriptLoversForEach = (learner) => {
+      let result = []
+      learner.forEach(learners => {
+        if(learners.lovesJS === 1 || true){
+          return learners
+        } 
+        else {
+          learners = 'no JS lovers here!'
+          }
+      })
+      return learner
     }
 
     // 👉 CHALLENGE 6
@@ -99,8 +119,17 @@
     // 🧠 It should work exactly the same as the getJavaScriptLoversForEach function above.
     // ❗ Notes:
     // 🧠 Solve this challenge using the filter method of the learners array.
-    const getJavaScriptLoversFilter = () => {
-
+    const getJavaScriptLoversFilter = (learner) => {
+        learner.filter(learners => {
+          if(learners.lovesJS === 1 || true){
+          return learners.lovesJS
+          }
+          if(learners.lovesJS === 0 || false){
+            learners--
+            return learners
+          }
+        })
+        return learner
     }
 
     // 👉 CHALLENGE 7
@@ -115,9 +144,20 @@
     // ❗ Notes:
     // 🧠 This could be solved by using filter to make an array of odd integers, and then using forEach to add them up.
     // 🧠 Or you could opt for solving everything with a single forEach which is the recommended approach (saves a loop).
-    const sumOddInts = () => {
-        
-    }
+    const sumOddInts = (integers) => {
+      firstArray = []
+      secondArray = []
+      let sum = 0
+      resultArray = [firstArray, secondArray]
+        integers.forEach(numbers => {
+            if(numbers % 2 !== 0){
+              firstArray.push(numbers)
+              sum += numbers
+            }
+        })
+        return [sum, firstArray]
+        }
+    
 
     // 👉 CHALLENGE 8
     // 🧠 The function checkInts takes any number of arguments, but each argument is an integer.
@@ -130,8 +170,18 @@
     // checkInts(2, 6) // should return ["even", "even"]
     // ❗ Notes:
     // 🧠 Solve this problem using rest parameters and map.
-    const checkInts = () => {
+    const checkInts = (...integers) => {
+      if(!integers.length){ 
+          return 'pass some arguments, yo!'
+        }
+      return integers.map(numbers => {
+        
 
+        if(numbers % 2 === 0){
+          return 'even'
+        }
+        return 'odd'
+      })
     }
 
     // 🧪 TESTS, do not work below this line
